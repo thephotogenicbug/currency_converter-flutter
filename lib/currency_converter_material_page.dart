@@ -16,9 +16,8 @@ class CurrencyConverterMaterialPage extends StatefulWidget {
 
 class _CurrencyConverterMaterialPageState
     extends State<CurrencyConverterMaterialPage> {
-
-   late double result;
-   final TextEditingController textEditingController = TextEditingController();
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -93,8 +92,9 @@ class _CurrencyConverterMaterialPageState
                 ),
                 onPressed: () {
                   // debug, release, profile
-                  result = double.parse(textEditingController.text) * 81;
-                  build(context);
+                  setState(() {
+                    result = double.parse(textEditingController.text) * 81;
+                  });
                 },
                 child: const Text('Convert'),
               ),
