@@ -19,6 +19,23 @@ class _CurrencyConverterMaterialPageState
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
 
+  void convert() {
+    setState(() {
+      result = double.parse(textEditingController.text) * 81;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
@@ -92,9 +109,7 @@ class _CurrencyConverterMaterialPageState
                 ),
                 onPressed: () {
                   // debug, release, profile
-                  setState(() {
-                    result = double.parse(textEditingController.text) * 81;
-                  });
+                  convert();
                 },
                 child: const Text('Convert'),
               ),
